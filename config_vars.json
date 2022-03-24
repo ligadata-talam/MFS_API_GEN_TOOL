@@ -1,0 +1,17 @@
+{
+  "rootPath": "/mnt/beegfs/API/production", 
+  "classesPath" : "/opt/apache-tomcat-9.0.43/webapps/", 
+  "apiExtractedPath": "/user/daasuser/api/production/apiextracteddata/cdrs/data", 
+  "extractLocatConfigHostLists": "hdfs://codaas", 
+  "extractHadoopConfig": "\"dfs.nameservices\": \"codaas\",\n\t\t\t\t\t\"dfs.ha.namenodes.codaas\": \"nn1,nn2\",\n\t\t\t\t\t\"dfs.namenode.rpc-address.codaas.nn1\": \"masternode1.mtncongo.net:8020\",\n\t\t\t\t\t\"dfs.namenode.rpc-address.codaas.nn2\": \"masternode2.mtncongo.net:8020\",\n\t\t\t\t\t\"dfs.client.failover.proxy.provider.codaas\": \"org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider\"", 
+  "zookeeper": "testsrv1.mtncongo.net:16000,testsrv3.mtncongo.net:16000",
+  "tomcatNodes": ["10.119.44.55"],
+  "dataMartTable":"kpi.mobile_lending_daily_report",
+  "extractLib": "ExtractDataAsParquet2_Spark2.4_2.11-3.1.20.2721.jar", 
+  "convertLib": "ConvertData2_Spark2.4_2.11-3.1.20.2721.jar",
+  "dependencies": [
+    "DependencyLibs2_2.11.11-3.1.20.2721.jar", 
+    "DependencyLibs_2.11.11-3.1.20.2721.jar", 
+    "ConvertData2_Spark2.4_2.11-3.1.00.2589.jar", 
+    "scripts_2.11-3.1.20.2721.jar"]
+}

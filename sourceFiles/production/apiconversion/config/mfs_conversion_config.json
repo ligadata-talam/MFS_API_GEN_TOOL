@@ -1,0 +1,73 @@
+{
+  "locationsConfig": [
+    {
+      "name": "local-ns-hdfs-config",
+      "config": {
+        "HostLists": "@@extractLocatConfigHostLists@@",
+        "HadoopConfig": {
+          @@extractHadoopConfig@@
+        }
+      }
+    }
+  ],
+  "totalLsus": 4096,
+  "maxFilesForConversion" : 200,
+  "dynVarConfigFile" : "@@rootPath@@/apiextraction/config/mfs_dynVars_config.txt",
+  "feedsConfig": [
+    {
+      "name": "mobile_lending_report",
+      "totalLsus": 4096,
+      "maxFilesForConversion" : 200,
+      "id": 1,
+      "locations": {
+        "input": [
+          {
+            "location": "hdfs://@@apiExtractedPath@@",
+            "config": {}
+          }
+        ]
+      },
+      "summaryFile": {
+        "fileName" : "",
+        "location": "file://@@rootPath@@/apidata/cdrs",
+        "config": {}
+      },
+      "dataFile": {
+        "fileName" : "",
+        "location": "file://@@rootPath@@/apidata/cdrs",
+        "config": {}
+      },
+      "totalCaptureKeys" : 100,
+      "delimiter" : "|",
+      "validationKeysFile" : "@@rootPath@@/apidata/cdrs",
+      "validationOutputFile" : "@@rootPath@@/apidata/cdrs"
+    },{
+      "name": "mobile_lending_report_adept",
+      "totalLsus": 4096,
+      "maxFilesForConversion" : 200,
+      "id": 2,
+      "locations": {
+        "input": [
+          {
+            "location": "hdfs://@@apiExtractedPath@@",
+            "config": {}
+          }
+        ]
+      },
+      "summaryFile": {
+        "fileName" : "",
+        "location": "file://@@rootPath@@/apidata/cdrs",
+        "config": {}
+      },
+      "dataFile": {
+        "fileName" : "",
+        "location": "file://@@rootPath@@/apidata/cdrs",
+        "config": {}
+      },
+      "totalCaptureKeys" : 100,
+      "delimiter" : "|",
+      "validationKeysFile" : "@@rootPath@@/apidata/cdrs",
+      "validationOutputFile" : "@@rootPath@@/apidata/cdrs"
+    }
+  ]
+}

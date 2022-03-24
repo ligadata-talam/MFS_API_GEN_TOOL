@@ -1,0 +1,116 @@
+{
+  "global.config": {
+    "use.proxy": false,
+    "data.handlers.max.idle.time.in.sec":300,
+    "threads.count.for.get.index":2,
+    "load.new.config.interval.in.secs": 300,
+    "request.default.max.results": 1000000,
+    "request.default.page.size": 10000,
+    "enable.pretty.json.output.format":"false",
+    "list.of.api.names.with.cached.enabled":"lea", 
+    "dump.schema.info.to.file": "/tmp/schemaInfo.txt",
+    "path.prefix.replacements": {"file:/mnt/beegfs_master": "file:/mnt/beegfs_apidfs"},
+    "map.single.date.to.latest.set":"mobile_lending_report_adept",
+    "request.cache.expire.time.in.secs": 1800
+  },
+  "locations.config": [
+    {
+      "name": "empty-local-config",
+      "config": {}
+    },
+    {
+      "name": "hdfs-config",
+      "config": {
+        "HostLists": [
+          "hdfs://daasza"
+        ],
+        "_Principal": "daasuser@MTN.COM",
+        "_Keytab": "/path/to/daasuser.keytab",
+        "HadoopConfig": {
+            "dfs.nameservices": "daasza",
+            "dfs.ha.namenodes.daasza": "nn1,nn2",
+            "dfs.namenode.rpc-address.daasza.nn1": "flabigrpa33.mtn.co.za:8020",
+            "dfs.namenode.rpc-address.daasza.nn2": "flabigrpa34.mtn.co.za:8020",
+            "dfs.client.failover.proxy.provider.daasza": "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider"
+        }
+      }
+    }
+  ],
+  "authorization.config": {
+    "lending": {                                 
+      "is.one.time.access": true,
+      "apis.to.apply": ["mobile_lending_report", "mobile_lending_report_adept"],
+      "subscriber.id.key.name": "kyc_msisdn",
+      "loaner.id.key.name": "userid"
+    }
+  },
+  "physical.feeds.config": [
+    {
+      "name": "mobile_lending_report",
+      "id": 5,
+      "buckets": 4096,
+      "timezone.offsets": "+1",
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file://@@rootPath@@/apidata/cdrs/mobile_lending_report/summary",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {}
+            }
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": ["kyc_msisdn"]
+    },{
+      "name": "mobile_lending_report_adept",
+      "id": 9,
+      "buckets": 4096,
+      "timezone.offsets": "+1",
+      "locations": {
+        "base.summary": [
+           {
+            "type": "LD_ENCR",
+            "location": "file://@@rootPath@@/apidata/cdrs/mobile_lending_report_adept/summary",
+            "weight": 5,
+            "summary.reader.class": "com.ligadata.api.readers.LocalFileSummaryReader",
+            "index.reader.class": "com.ligadata.api.readers.LocalFileIndexReader",
+            "data.reader.class": "com.ligadata.api.readers.LocalFileDataReader",
+            "config": {}
+          }
+        ]
+      },
+      "unique.key.field": "",
+      "enable.dedup": false,
+      "system.fields": [],
+      "fields.type": [
+        {
+          "name": "kamanja_loaded_date",
+          "type": "string",
+          "is.array": false
+        }
+      ],
+      "key.fields": ["kyc_msisdn_random"]
+    }
+  ],
+  "_local.sync": {
+    "api_local_default_retention_period_days": "240",
+    "api_local_full_scan_interval_ms": "1800000",
+    "api_remote_inactivity_scan_interval_ms": "1800000",
+    "api_remote_inactivity_duration_ms": "1200000",
+    "api_storage_tier1_local_dir": "@@rootPath@@/apidata/cdrs",
+    "api_remote_feeddirs":"@@rootPath@@/apidata/cdrs/aa"
+  }
+}

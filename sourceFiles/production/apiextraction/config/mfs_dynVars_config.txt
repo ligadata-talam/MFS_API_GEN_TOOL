@@ -1,0 +1,24 @@
+Concurrency.NumOfThreadsInConversion = 1
+Concurrency.NumOfThreadsInMakeLSUs = 2
+
+Partial.DoOnlyFileInMsgs = false
+Partial.DoNotMakeLSUs = false
+Partial.DoNotPersitLSUs = false
+
+Performance.CompressInLSUPack = true
+Performance.CompressFinalKeyData = true
+Performance.CompressKeyIndices = true
+Performance.MaxLSUBlockUncompressedSizeInMB = 512
+Performance.MaxLSUDataFileSizeInMB = 8192
+
+Trace.Conversion.TraceExtractDataFromParquet = false
+Trace.Conversion.TraceConvWrapperDetails = false
+Trace.Conversion.TraceFileStart = false
+Trace.Conversion.TraceFileDone = false
+
+
+Trace.LSU.EnableHexDump = false
+Trace.Packer.PackerAdd = false
+Trace.Packer.PackerAddDetail = false
+Trace.Packer.TraceFileMsgs = false
+Trace.Packer.TraceLSUs = false

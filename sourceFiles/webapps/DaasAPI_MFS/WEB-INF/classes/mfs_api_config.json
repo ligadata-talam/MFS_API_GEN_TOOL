@@ -1,0 +1,9 @@
+{
+    "api.lending.config": {
+      "summary.table.name": "lendingapi:summarytable",
+      "detail.table.name": "lendingapi:detailtable",
+      "one.loaner.only":true,
+      "partnerinfo.file.name":"@@classesPath@@/mfs_partner_info.csv"
+    }
+ }
+  

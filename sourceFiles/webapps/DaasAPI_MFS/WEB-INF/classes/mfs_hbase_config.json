@@ -1,0 +1,14 @@
+{
+ "hbase.config": {
+        "hbase.zookeeper.quorum": "@@zookeeper@@",
+        "hbase.client.write.buffer": "10485760",
+        "hbase.client.keyvalue.maxsize":"1048576",
+        "_zookeeper.znode.parent": "/hbase",
+        "zookeeper.session.timeout":"90000",
+        "zookeeper.recovery.retry":"1",
+        "hbase.client.retries.number":"3",
+        "hbase.client.pause":"5000",
+        "login.keytap": "",
+        "login.user": ""
+    }
+}
